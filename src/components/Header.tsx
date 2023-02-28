@@ -43,7 +43,9 @@ const Header = () => {
     return (
       <Link
         to={page}
-        className={`text-base capitalize mx-4 ${pathname === pagePath && 'underline font-bold'}`}
+        className={`mx-2 md:mx-4
+        text-xs sm:text-sm md:text-base lg:text-lg
+        ${pathname === pagePath && 'underline font-bold'} capitalize`}
       >
         {page === '/' ? 'Home' : page}
       </Link>
@@ -52,20 +54,21 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full absolute top-0 pt-5
+      className={`w-full absolute top-0 pt-5 z-50
+      ${darkMode ? 'bg-black' : 'bg-white'}
       flex justify-between items-center`}
     >
-      <div className="w-2/5 pl-6 opacity-0"></div>
-      <h1 className="text-4xl">KUZO MUSIC</h1>
-      <div className="w-2/5 flex justify-end items-center pr-6">
-        {windowSize.width >= 768 && (
-          <div className="pr-6 flex justify-end items-center">
-            {linkFactory('/')}
-            {linkFactory('listen')}
-            {linkFactory('watch')}
-            {linkFactory('contact')}
-          </div>
-        )}
+      {windowSize.width < 640 && (
+        <img src="/img/kuzo_logo_576.png" alt="kuzo logo" className="w-16 ml-4" />
+      )}
+      {windowSize.width >= 640 && <h1 className="text-4xl ml-8">KUZO MUSIC</h1>}
+      <div className="w-fit flex justify-end items-center pr-4 md:pr-6">
+        <div className="flex justify-end items-center pr-2">
+          {linkFactory('/')}
+          {linkFactory('listen')}
+          {linkFactory('watch')}
+          {linkFactory('contact')}
+        </div>
         {themeToggle}
       </div>
     </header>

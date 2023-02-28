@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "launch": "sudo netlify deploy",
+    "launch:prod": "sudo netlify deploy --prod"
   },
   "dependencies": {
     "react": "^18.2.0",

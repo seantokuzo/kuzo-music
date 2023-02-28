@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Header from './components/Header'
-import { useAppContext } from './context/appContext'
 import { Home, Listen, Watch, Contact, NotFound } from './pages'
+import Footer from './components/Footer'
+import { useAppContext } from './context/appContext'
 
 function App() {
   const { darkMode, changeWindowSize } = useAppContext()
+  const { pathname } = useLocation()
 
   // TRACK WINDOW SIZE AND FIX SHITTY MOBILE VIEWPORT HEIGHT
   useEffect(() => {
@@ -28,6 +30,15 @@ function App() {
     // eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+      return
+    }
+  }, [darkMode])
+
   return (
     <main
       className={`w-full min-h-screen flex flex-col justify-center items-center ${
@@ -42,6 +53,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {pathname !== '/' && <Footer />}
     </main>
   )
 }

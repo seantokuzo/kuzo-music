@@ -4,6 +4,7 @@ import Header from './components/Header'
 import { Home, Listen, Watch, Contact, NotFound } from './pages'
 import Footer from './components/Footer'
 import { useAppContext } from './context/appContext'
+import ThankYou from './pages/ThankYou'
 
 function App() {
   const { darkMode, changeWindowSize } = useAppContext()
@@ -41,16 +42,17 @@ function App() {
 
   return (
     <main
-      className={`w-full min-h-screen flex flex-col justify-center items-center ${
+      className={`w-full min-h-screen flex flex-col items-center ${
         darkMode ? 'bg-black text-white' : 'bg-white text-black'
       }`}
     >
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/listen" element={<Listen />} />
-        <Route path="/watch" element={<Watch />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="listen" element={<Listen />} />
+        <Route path="watch" element={<Watch />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="thankyou" element={<ThankYou />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {pathname !== '/' && <Footer />}

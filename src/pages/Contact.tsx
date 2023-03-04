@@ -65,7 +65,7 @@ const Contact = () => {
           type="hidden"
           name="_next"
           // TODO - change link once live
-          value="https://localhost:5150/thankyou"
+          value="https://kuzomusic.com/thankyou"
         ></input>
         <button
           type="submit"

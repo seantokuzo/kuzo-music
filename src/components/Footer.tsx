@@ -35,7 +35,9 @@ const Footer = () => {
   return (
     <footer
       className={`w-full py-4 lg:py-6 ${
-        document.body.scrollHeight <= windowSize.height && windowSize.height > 600 && 'fixed bottom-0'
+        document.body.scrollHeight <= windowSize.height &&
+        windowSize.height > 600 &&
+        'fixed bottom-0'
       }
       flex flex-col justify-center items-center`}
     >
@@ -51,9 +53,15 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer noopener"
             title={
-              social.link !== 'youtubemusic'
-                ? social.link.slice(0, 1).toUpperCase() + social.link.slice(1)
-                : 'Youtube Music'
+              social.link === 'youtubemusic'
+                ? 'Youtube Music'
+                : social.link === 'itunes'
+                ? 'Apple Music'
+                : social.link === 'amazon'
+                ? 'Amazon Music'
+                : social.link === 'soundcloud'
+                ? 'SoundCloud'
+                : social.link.slice(0, 1).toUpperCase() + social.link.slice(1)
             }
           >
             {social.link === 'soundcloud' ? (

@@ -21,7 +21,7 @@ const Contact = () => {
         rounded-lg
         flex flex-col justify-center items-center"
         name="contact"
-        action="https://formsubmit.co/kuzomusic@gmail.com"
+        action="https://formsubmit.co/e1a80bef94bb65a6f4eab1e1a954985d"
         method="POST"
       >
         <h3 className="text-2xl text-center">Contact Us</h3>

@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import { useAppContext } from '../context/appContext'
 
 const Watch = () => {
-  const [timer, setTimer] = useState<boolean>(true)
+  const { windowSize } = useAppContext()
+  const [timer, setTimer] = useState<boolean>(windowSize.width > 640 ? true : false)
 
   useEffect(() => {
+    if (windowSize.width <= 640) return
     setTimeout(() => {
       setTimer(false)
     }, 3500)

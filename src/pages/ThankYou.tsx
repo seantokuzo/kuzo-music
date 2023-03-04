@@ -17,6 +17,9 @@ const ThankYou = () => {
         border-2 rounded-full border-kuzoOrange
         text-xl sm:text-2xl md:text-3xl
         hover:scale-110 transition-all"
+        title={
+          path === '/' ? 'Home' : path.slice(1).slice(0, 1).toUpperCase() + path.slice(1).slice(1)
+        }
       >
         {icon}
       </Link>

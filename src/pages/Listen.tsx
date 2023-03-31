@@ -3,19 +3,19 @@ import { useAppContext } from '../context/appContext'
 
 const spotifyLinks = [
   'https://open.spotify.com/embed/track/7yfLli50cQlObX06lz6nbq?utm_source=generator',
-  'https://open.spotify.com/embed/track/3rSkn3pcxB8h51spbQ8WkF?utm_source=generator',
+  // 'https://open.spotify.com/embed/track/3rSkn3pcxB8h51spbQ8WkF?utm_source=generator',
   'https://open.spotify.com/embed/track/0zbF9ACs41YQQmeUR1Z2D6?utm_source=generator'
 ]
 
 const itunesLinks = [
   'https://embed.music.apple.com/us/album/luna/1272883926?i=1272884123',
-  'https://embed.music.apple.com/us/album/monsoon/1356623014?i=1356623047',
+  // 'https://embed.music.apple.com/us/album/monsoon/1356623014?i=1356623047',
   'https://embed.music.apple.com/us/album/mirage/1313081071?i=1313081078'
 ]
 
 const amazonMusicLinks = [
   'https://music.amazon.com/embed/B074WFYXK2/?id=0AVTGvdvVn&marketplaceId=ATVPDKIKX0DER&musicTerritory=US',
-  'https://music.amazon.com/embed/B07B9JVFWX/?id=LRM3aDaceH&marketplaceId=ATVPDKIKX0DER&musicTerritory=US',
+  // 'https://music.amazon.com/embed/B07B9JVFWX/?id=LRM3aDaceH&marketplaceId=ATVPDKIKX0DER&musicTerritory=US',
   'https://music.amazon.com/embed/B077FHGY6F/?id=s5nbTBgB63&marketplaceId=ATVPDKIKX0DER&musicTerritory=US'
 ]
 
@@ -29,7 +29,7 @@ type MusicPlayer = 'Spotify' | 'Apple Music' | 'Amazon Music' | 'SoundCloud'
 
 const Listen = () => {
   const { windowSize } = useAppContext()
-  const [musicPlayer, setMusicPlayer] = useState<MusicPlayer>('Spotify')
+  const [musicPlayer, setMusicPlayer] = useState<MusicPlayer>('SoundCloud')
 
   const musicPlayerSelector = (player: MusicPlayer) => {
     return (
@@ -56,10 +56,10 @@ const Listen = () => {
         text-xs sm:text-sm md:text-base lg:text-lg
         flex flex-wrap justify-center items-center"
       >
+        {musicPlayerSelector('SoundCloud')}
         {musicPlayerSelector('Spotify')}
         {musicPlayerSelector('Apple Music')}
         {musicPlayerSelector('Amazon Music')}
-        {musicPlayerSelector('SoundCloud')}
       </div>
       {musicPlayer === 'Spotify' &&
         spotifyLinks.map((link) => {

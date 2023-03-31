@@ -7,7 +7,7 @@ import { useAppContext } from './context/appContext'
 import ThankYou from './pages/ThankYou'
 
 function App() {
-  const { darkMode, changeWindowSize } = useAppContext()
+  const { changeWindowSize } = useAppContext()
   const { pathname } = useLocation()
 
   // TRACK WINDOW SIZE AND FIX SHITTY MOBILE VIEWPORT HEIGHT
@@ -31,20 +31,10 @@ function App() {
     // eslint-disable-next-line
   }, [])
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode')
-    } else {
-      document.body.classList.remove('dark-mode')
-      return
-    }
-  }, [darkMode])
-
   return (
     <main
-      className={`w-full min-h-screen flex flex-col items-center ${
-        darkMode ? 'bg-black text-white' : 'bg-white text-black'
-      }`}
+      className="w-full min-h-screen flex flex-col items-center
+        bg-black text-white"
     >
       <Header />
       <Routes>

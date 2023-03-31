@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { useAppContext } from '../context/appContext'
 
 const Contact = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
-  const { darkMode } = useAppContext()
 
   return (
     <div
@@ -29,7 +27,7 @@ const Contact = () => {
           name
         </label>
         <input
-          className={`w-full rounded-sm text-center ${darkMode ? 'bg-white text-black' : ''}`}
+          className="w-full rounded-sm text-center bg-white text-black"
           value={name}
           onChange={(e) => setName(e.target.value)}
           type="text"
@@ -42,7 +40,7 @@ const Contact = () => {
           email
         </label>
         <input
-          className={`w-full rounded-sm text-center ${darkMode ? 'bg-white text-black' : ''}`}
+          className="w-full rounded-sm text-center bg-white text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -53,7 +51,7 @@ const Contact = () => {
           message
         </label>
         <textarea
-          className={`w-full rounded-sm h-24 ${darkMode ? 'bg-white text-black' : ''}`}
+          className="w-full rounded-sm h-24 bg-white text-black"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           name="message"
@@ -61,11 +59,7 @@ const Contact = () => {
           maxLength={400}
           required
         />
-        <input
-          type="hidden"
-          name="_next"
-          value="https://kuzomusic.com/thankyou"
-        ></input>
+        <input type="hidden" name="_next" value="https://kuzomusic.com/thankyou"></input>
         <button
           type="submit"
           className="mt-4 px-6 py-3

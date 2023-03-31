@@ -5,23 +5,19 @@ import reducer from './reducer'
 export type WindowSize = { width: number; height: number }
 
 export interface StateInterface {
-  darkMode: boolean
   windowSize: WindowSize
 }
 
 export const initialState: StateInterface = {
-  darkMode: true,
   windowSize: { width: window.innerWidth, height: window.innerHeight }
 }
 
 interface AppContextInterface extends StateInterface {
-  toggleDarkMode: () => void
   changeWindowSize: (newSize: WindowSize) => void
 }
 
 const AppContext = createContext<AppContextInterface>({
   ...initialState,
-  toggleDarkMode: () => null,
   changeWindowSize: () => null
 })
 
@@ -32,10 +28,6 @@ type Props = {
 const AppContextProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const toggleDarkMode = () => {
-    dispatch({ type: ActionType.TOGGLE_DARK_MODE })
-  }
-
   const changeWindowSize = (newSize: WindowSize) => {
     dispatch({ type: ActionType.UPDATE_WINDOW_SIZE, payload: { newSize } })
   }
@@ -44,7 +36,6 @@ const AppContextProvider = ({ children }: Props) => {
     <AppContext.Provider
       value={{
         ...state,
-        toggleDarkMode,
         changeWindowSize
       }}
     >
